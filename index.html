@@ -11,30 +11,62 @@
       <h1>Showcase: Accessible hashtags</h1>
       <p>
         Here you can test how your screen reader will announce a long hashtag.
-        It should be pronounced as "Easy web accessibility wins hashtags".
+        It should be pronounced as "Easy web accessibility wins hashtags",
+        depending on the software and browser you use.
       </p>
     </header>
 
     <main>
       <div class="container">
-        <h2>With all lowercase letters</h2>
+        <h2>Test case 1: All lowercase letters</h2>
+        <p>A &lt;div&gt; with an WAI-ARIA role of "note".</p>
         <div role="note">#easywebaccessibilitywinshashtags</div>
       </div>
 
       <div class="container">
-        <h2>With uppercase letters for single words</h2>
+        <h2>Test case 2: Uppercase letters for single words</h2>
+        <p>A &lt;div&gt; with an WAI-ARIA role of "note".</p>
         <div role="note">#EasyWebAccessibilityWinsHashtags</div>
       </div>
 
       <div class="container">
-        <h2>With WAI-ARIA manually added</h2>
+        <h2>
+          Test case 3: Uppercase letters for single words, wrapped in a
+          &lt;p&gt; element
+        </h2>
+        <p>#EasyWebAccessibilityWinsHashtags</p>
+      </div>
+
+      <div class="container">
+        <h2>
+          Test case 4: WAI-ARIA manually added, wrapped in a &lt;div&gt; element
+        </h2>
+        <p>
+          A &lt;div&gt; with an WAI-ARIA role of "note" and an aria-label
+          containing the string "#EasyWebAccessibilityWinsHashtags". Inside is
+          the actual element, which is another &lt;div&gt; with the
+          aria-hidden='true' attribute.
+        </p>
         <div aria-label="Easy web accessibility wins: Hashtags" role="note">
           <div aria-hidden="true">#EasyWebAccessibilityWinsHashtags</div>
         </div>
       </div>
 
       <div class="container">
-        <h2>With WAI-ARIA automatically added via JavaScript</h2>
+        <h2>
+          Test case 5: WAI-ARIA added via JavaScript, wrapped in a &lt;div&gt;
+          element
+        </h2>
+        <p>
+          A &lt;div&gt; element with a WAI-ARIA role of "note". Inside is the
+          actual element, which is another &lt;div&gt; with the
+          aria-hidden='true' attribute.
+        </p>
+        <p>
+          The content is injected via JavaScript, adding an aria-label to the
+          parent &lt;div&gt;. This string has no "#" symbol and added white
+          space between every word.
+        </p>
         <div id="enhance-me" role="note">
           <div aria-hidden="true">#EasyWebAccessibilityWinsHashtags</div>
         </div>
