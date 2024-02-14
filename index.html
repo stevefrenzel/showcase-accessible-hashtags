@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Showcase: Accessible hashtags</title>
+  </head>
+  <body>
+    <header>
+      <h1>Showcase: Accessible hashtags</h1>
+      <p>
+        Here you can test how your screen reader will announce a long hashtag.
+        It should be pronounced as "Easy web accessibility wins hashtags".
+      </p>
+    </header>
+
+    <main>
+      <div class="container">
+        <h2>With all lowercase letters</h2>
+        <div role="note">#easywebaccessibilitywinshashtags</div>
+      </div>
+
+      <div class="container">
+        <h2>With uppercase letters for single words</h2>
+        <div role="note">#EasyWebAccessibilityWinsHashtags</div>
+      </div>
+
+      <div class="container">
+        <h2>With WAI-ARIA manually added</h2>
+        <div aria-label="Easy web accessibility wins: Hashtags" role="note">
+          <div aria-hidden="true">#EasyWebAccessibilityWinsHashtags</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2>With WAI-ARIA automatically added via JavaScript</h2>
+        <div id="enhance-me" role="note">
+          <div aria-hidden="true">#EasyWebAccessibilityWinsHashtags</div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the element with the ID "enhance-me"
+      var enhanceElement = document.getElementById('enhance-me');
+
+      // Get the text content of the element and remove the "#"
+      var textContent = enhanceElement.textContent.replace('#', '');
+
+      // Add whitespace before every uppercase letter, except for the first one
+      var modifiedText = textContent.replace(/([A-Z])/g, ' $1').trim();
+
+      // Set the modified text as the aria-label attribute
+      enhanceElement.setAttribute('aria-label', modifiedText);
+    });
+  </script>
+</html>
